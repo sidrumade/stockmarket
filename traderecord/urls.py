@@ -9,4 +9,5 @@ app_name = 'traderecord'
 urlpatterns = [
     path('register/', login_required(StockRecordsFormView.as_view(),login_url='userinfo:login'), name='add_record_form'),
     path('display_record/',login_required(StockRecordDetailView.as_view(),login_url='userinfo:login'),name='display'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+ #             + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
