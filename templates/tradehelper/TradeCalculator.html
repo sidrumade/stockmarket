@@ -1,0 +1,147 @@
+{% extends 'index.html' %}
+
+{% block script_block %}
+    <script>
+        $(document).ready(function () {
+            $my_portfolio ={{ My_Portfolio }};
+            $high_of_green_candle ={{ High_of_Green_Candle }};
+            $lowest_low ={{ Lowest_Low }};
+            $risk ={{ Risk }};
+            $entry ={{ High_of_Green_Candle|add:"1" }};
+            $stoploss ={{ Lowest_Low|add:"-1" }};
+            $difference = $entry - $stoploss;
+            $quantity = $risk / $difference
+            $required_portfolio = $quantity * $entry;
+            $target1 = $entry + $difference * 1;
+            $target2 = $entry + $difference * 2;
+            $target3 = $entry + $difference * 3;
+
+
+            $('#my_portfolio').val($my_portfolio);
+            $('#high_of_green_candle').val($high_of_green_candle);
+            $('#lowest_low').val($lowest_low);
+            $('#risk').val($risk);
+            $('#entry').val($entry);
+            $('#stoploss').val($stoploss);
+            $('#difference').val($difference);
+            $('#quantity').val($quantity);
+            $('#required_portfolio').val($required_portfolio);
+            $('#target1').val($target1);
+            $('#target2').val($target2);
+            $('#target3').val($target3);
+
+
+        });
+    </script>
+{% endblock %}
+{% block title_block %}
+    Stock Calculator
+{% endblock %}
+
+{% block nav_block %}
+                    <a class="nav-link active" aria-current="page" href="{% url 'tradehelper:tradecalculatorform' %}">TradeCalculator</a>
+                    <a class="nav-link" href="{% url 'traderecord:add_record_form' %}">AddRecords</a>
+                    <a class="nav-link" href="{% url 'traderecord:display' %}">ViewRecords</a>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown end-0">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                               aria-expanded="false">{{ user.username }}</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Change Password</a></li>
+                                <li><a class="dropdown-item" href="#">Change Username</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'userinfo:logout' %}">Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'userinfo:registration' %}">Register</a>
+                        <a class="nav-link" href="{% url 'userinfo:login' %}">Login</a>
+                    {% endif %}
+                {% endblock %}
+
+{% block body_block %}
+    <div class="container-sm m-sm-auto">
+        <form method="GET">
+            <div class="mb-3">
+                <label for="my_portfolio" class="form-label">Portfolio</label>
+                {{ form.My_Portfolio }}
+                <div id="my_portfolioHelp" class="form-text">Enter your portfolio</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="high_of_green_candle" class="form-label">Highest High</label>
+                {{ form.High_of_Green_Candle }}
+                <div id="high_of_green_candleHelp" class="form-text">High of Green Candle</div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="lowest_low" class="form-label">Lowest Low</label>
+                {{ form.Lowest_Low }}
+                <div id="lowest_lowHelp" class="form-text">Enter Lowest of current or previous candle</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="risk" class="form-label">Risk</label>
+                {{ form.Risk }}
+                <div id="riskHelp" class="form-text">How much risk you wanna take?</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <div class="mb-3">
+                <label for="entry" class="form-label">Entry</label>
+                {{ form.Entry }}
+                <div id="entryHelp" class="form-text">This is your buying entry</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="stoploss" class="form-label">Stop Loss</label>
+                {{ form.StopLoss }}
+                <div id="stoplossHelp" class="form-text">This is your stoploss</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="difference" class="form-label">Difference</label>
+                {{ form.Difference }}
+                <div id="differenceHelp" class="form-text">Difference between entry and stoploss</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                {{ form.Quantity }}
+                <div id="quantityHelp" class="form-text">Stock quantity for buying</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="required_portfolio" class="form-label">Required Portfolio</label>
+                {{ form.Required_Portfolio }}
+                <div id="required_portfolioHelp" class="form-text">Required portfoio for given shares</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="target1" class="form-label">Target1</label>
+                {{ form.Target_1 }}
+                <div id="target1Help" class="form-text">This is your first target</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="target2" class="form-label">Target2</label>
+                {{ form.Target_2 }}
+                <div id="target2Help" class="form-text">This is your second target</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="target3" class="form-label">Target3</label>
+                {{ form.Target_3 }}
+                <div id="target3Help" class="form-text">This is your third target</div>
+            </div>
+
+
+        </form>
+
+    </div>
+{% endblock %}
+

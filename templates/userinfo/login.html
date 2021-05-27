@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+
+{% block title_block %}
+    Login
+{% endblock %}
+
+{% block script_block %}
+{% endblock %}
+
+{% block nav_block %}
+    <a class="nav-link" aria-current="page" href="{% url 'tradehelper:tradecalculatorform' %}">TradeCalculator</a>
+    <a class="nav-link" href="{% url 'traderecord:add_record_form' %}">AddRecords</a>
+    <a class="nav-link" href="{% url 'traderecord:display' %}">ViewRecords</a>
+    {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown end-0">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+               aria-expanded="false">{{ user.username }}</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Change Password</a></li>
+                <li><a class="dropdown-item" href="#">Change Username</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'userinfo:logout' %}">Logout</a></li>
+            </ul>
+        </li>
+    {% else %}
+        <a class="nav-link" href="{% url 'userinfo:registration' %}">Register</a>
+        <a class="nav-link active" href="{% url 'userinfo:login' %}">Login</a>
+    {% endif %}
+{% endblock %}
+{% block body_block %}
+
+    <h1>Login</h1>
+    {% for message in messages %}
+
+        <div class="alert alert-success">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+
+            {{ message }}
+
+        </div>
+    {% endfor %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit">
+    </form>
+{% endblock %}
