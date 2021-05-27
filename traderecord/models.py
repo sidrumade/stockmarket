@@ -80,7 +80,7 @@ class StockRecords(models.Model):
         ('SYSTEMLESS_TRADE', 'SYSTEMLESS_TRADE'),
         ('NONE', 'NONE')
     ]
-    user=models.CharField(max_length=20)
+    user=models.CharField(max_length=20,default='false')
     portfolio = models.FloatField(default=0.0)
     stock = models.CharField(choices=NIFTY_BETA_STOCKS, max_length=50)
     stock_type = models.CharField(choices=TRADE_TYPE, max_length=10, default='SWING')
