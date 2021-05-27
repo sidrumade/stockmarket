@@ -1,1 +1,1 @@
-web: gunicorn TradeRecords.wsgi --log-file -
+web: gunicorn TradeRecords.wsgi.application --log-file -
