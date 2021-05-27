@@ -73,7 +73,7 @@
                 <td class="table-success">{{ record.profile }}</td>
                 <td class="table-active">{{ record.emotion }}</td>
                 <td class="table-primary">{{ record.mistake }}</td>
-                <td><a href="http://127.0.0.1:8000/traderecord/media/{{ record.graph }}">{{ record.graph }}</a></td>
+                <td><img src="http://{{ request.get_host }}/media/{{ record.graph }}"  alt="Smiley face" width="50" height="50"/> </td>
 
             </tr>
         {% endfor %}
