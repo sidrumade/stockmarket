@@ -73,8 +73,8 @@
                 <td class="table-success">{{ record.profile }}</td>
                 <td class="table-active">{{ record.emotion }}</td>
                 <td class="table-primary">{{ record.mistake }}</td>
-                <td><img src="http://{{ request.get_host }}/media/{{ record.graph }}"  alt="Smiley face" width="50" height="50"/> </td>
-
+{#                <td><img src="http://{{ request.get_host }}/media/{{ record.graph }}"  alt="Smiley face" width="50" height="50"/> </td>#}
+                <td><img src="https://{{ request.get_host }}{{ MEDIA_URL }}{{ record.graph }}"  alt="Smiley face" width="50" height="50"/> </td></td>
             </tr>
         {% endfor %}
         </tbody>
