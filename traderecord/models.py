@@ -63,7 +63,7 @@ class StockRecords(models.Model):
         ('50MA+UBB', '50MA+UBB'),
         ('SUPER-T+CCI', 'SUPER-T+CCI'),
         ('OTHER', 'OTHER'),
-        ('FIBONACCI','FIBONACCI')
+        ('FIBONACCI', 'FIBONACCI')
     ]
     EMOTIONS = [
         ('NORMAL', 'NORMAL'),
@@ -80,7 +80,7 @@ class StockRecords(models.Model):
         ('SYSTEMLESS_TRADE', 'SYSTEMLESS_TRADE'),
         ('NONE', 'NONE')
     ]
-    user=models.CharField(max_length=20,default='false')
+    user = models.CharField(max_length=20, default='false')
     portfolio = models.FloatField(default=0.0)
     stock = models.CharField(choices=NIFTY_BETA_STOCKS, max_length=50)
     stock_type = models.CharField(choices=TRADE_TYPE, max_length=10, default='SWING')
@@ -95,10 +95,10 @@ class StockRecords(models.Model):
     profile = models.FloatField(default=0.0)
     emotion = models.CharField(max_length=10, choices=EMOTIONS, default='NORMAL')
     mistake = models.CharField(max_length=20, choices=MISTAKES, default='NONE')
-    graph = models.ImageField(upload_to='graph', blank=True)
+    graph = models.ImageField(upload_to='graph', blank=True, default='menu.png')
 
     def __str__(self):
         return self.stock
 
-
-
+    def get_img(self):
+        return self.graph.url
