@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uy3d$vxp$x)9z$44_x!25_759^)j!u&e%dnro0cq(nt2_ww@pu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['django-trading-helper.herokuapp.com', '127.0.0.1', ]
+ALLOWED_HOSTS = ['django-trading-helper.herokuapp.com', '127.0.0.1','localhost','' ]
 
 # Application definition
 
@@ -131,4 +131,4 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#STATICFILES_STORAGE = 'TradeRecords.storage.S3Storage'
+#STATICFILES_STORAGE = 'django-trading-helper.storage.S3Storage'
