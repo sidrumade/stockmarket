@@ -48,6 +48,8 @@ class SendMail:
         print(self.df)
         print('csv loaded')
     def _fetch_images_(self):
+        GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+        CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
@@ -55,7 +57,8 @@ class SendMail:
         #wd = webdriver.Chrome(os.getcwd()+'/chromedriver',options=options)
         print('os.getcwd() ---',os.getcwd())
         print('os.listdir()---',os.listdir())
-        driver =webdriver.Chrome('.chromedriver',options=options) #apply / accordingly win/linux
+        options.binary_location = GOOGLE_CHROME_PATH
+        driver =webdriver.Chrome(execution_path=CHROMEDRIVER_PATH,options=options) #apply / accordingly win/linux for server its diff
         driver.set_window_size(1920, 1080)
         driver.fullscreen_window()
         count=itertools.count()
