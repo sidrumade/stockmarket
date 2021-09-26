@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import Mailing
+from .views import mailing
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -7,7 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 app_name = 'api'
 
 urlpatterns = [
-    path('mail/', Mailing.as_view(), name='mail'),
+    path('mail/', mailing, name='mail'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
