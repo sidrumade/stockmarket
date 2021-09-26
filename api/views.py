@@ -87,7 +87,7 @@ class SendMail:
         subject=subject,
         html_content=html)
         try:
-            api='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'
+            api='api'
             sg = SendGridAPIClient(api)
             self._attach_images_(message) #attach images
             print('attachment done')
