@@ -53,7 +53,9 @@ class SendMail:
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         #wd = webdriver.Chrome(os.getcwd()+'/chromedriver',options=options)
-        driver =webdriver.Chrome('chromedriver',options=options) #apply / accordingly win/linux
+        print('os.getcwd() ---',os.getcwd())
+        print('os.listdir()---',os.listdir())
+        driver =webdriver.Chrome('./chromedriver',options=options) #apply / accordingly win/linux
         driver.set_window_size(1920, 1080)
         driver.fullscreen_window()
         count=itertools.count()
