@@ -46,13 +46,14 @@ class SendMail:
     def _load_df_(self):
         self.df=pd.read_csv('symbols.csv')
         print(self.df)
+        print('csv loaded')
     def _fetch_images_(self):
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         #wd = webdriver.Chrome(os.getcwd()+'/chromedriver',options=options)
-        driver =webdriver.Chrome(os.getcwd()+'/chromedriver',options=options) #apply / accordingly win/linux
+        driver =webdriver.Chrome('chromedriver',options=options) #apply / accordingly win/linux
         driver.set_window_size(1920, 1080)
         driver.fullscreen_window()
         count=itertools.count()
