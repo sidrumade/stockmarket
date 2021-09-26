@@ -27,3 +27,4 @@ wheel==0.36.2
 whitenoise==5.2.0
 selenium==3.141.0
 sendgrid==6.8.1
+pandas==1.2.4
