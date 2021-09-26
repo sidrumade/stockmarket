@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'tradehelper',
     'traderecord',
     'userinfo',
-    'rest_framework',
     'api',
     
 ]
