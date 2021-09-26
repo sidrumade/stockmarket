@@ -27,6 +27,7 @@ urlpatterns = [
     path('tradehelper/', include('tradehelper.urls', namespace='tradehelper'), name='tradehelper'),
     path('traderecord/', include('traderecord.urls', namespace='traderecord'), name='traderecord'),
     path('userinfo/',include('userinfo.urls',namespace='userinfo'),name='userinfo'),
+    path('api/',include('api.urls',namespace='api'),name='api'),
 
 ]
             # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
