@@ -55,7 +55,7 @@ class SendMail:
         #wd = webdriver.Chrome(os.getcwd()+'/chromedriver',options=options)
         print('os.getcwd() ---',os.getcwd())
         print('os.listdir()---',os.listdir())
-        driver =webdriver.Chrome('app/chromedriver',options=options) #apply / accordingly win/linux
+        driver =webdriver.Chrome('.chromedriver',options=options) #apply / accordingly win/linux
         driver.set_window_size(1920, 1080)
         driver.fullscreen_window()
         count=itertools.count()
